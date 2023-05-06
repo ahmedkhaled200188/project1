@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : project1.c
- Author      : 
+ Author      : ahmed khaled
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
