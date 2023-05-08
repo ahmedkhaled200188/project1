@@ -1,10 +1,10 @@
 /*
  ============================================================================
  Name        : project1.c
- Author      : ahmed khaled
+ Author      : ahmed khaled ahmed
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : vehicle control c project
  ============================================================================
  */
 
@@ -75,14 +75,23 @@ while(1)
 		set_room_temprature();
 
 		}
-		else if (sensorcomm=='d')
+		else if (sensorcomm=='d')//d. Set the engine temperature (Engine Temperature Sensor)
 		{
 		set_engine_temprature();
+		}
+		else
+		{
+		continue;
 		}
 
 		print_vehicle_state();
 	}
+
 }
+	else {
+		continue;
+	}
+
 }}
 void print_vehicle_control(int index)
 {
@@ -111,7 +120,7 @@ void print_sensors_menu(int index)
 			int i =0 ;
 			for(i=0;i<4;i++){
 				printf("%s",sensorsmenu[i]);
-				fflush(NULL);
+
 		}
 		}
 		else
@@ -119,6 +128,7 @@ void print_sensors_menu(int index)
 			printf("%s\n",sensorsmenu[index]);
 			fflush(NULL);
 		}
+		fflush(NULL);
 
 
 }
@@ -161,9 +171,19 @@ void set_vehicle_speed()
 							;fflush(NULL);
 					continue;
 				}
-		}			}
+				}		
+		if(ptr->Vehicle_Speed==30)
+		{
+			ptr->AC=on;
+			ptr->Room_Temperature=(ptr->Room_Temperature*(5/4)+1);
+			ptr->Engine_Temperature_Controller_State=1;
+			ptr->Engine_Temperature=(ptr->Engine_Temperature*(5/4)+1);
+		}
+		
+	}
 void set_room_temprature()
 {
+
 	int temperature ;
 	scanf("%d",&temperature);
 	if(temperature<10)
@@ -173,7 +193,7 @@ void set_room_temprature()
 	}
 	else if (temperature>30)
 	{
-		ptr->AC=off;
+		ptr->AC=on;
 		ptr->Room_Temperature=20;
 	}
 	else
